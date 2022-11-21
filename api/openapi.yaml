@@ -1,0 +1,42 @@
+openapi: "3.0.3"
+info:
+  version: 0.1.0
+  title: Showcase
+  description: A testservice for kubernetes deployments
+servers:
+  - url: http://localhost:8080
+
+components:
+  responses:
+    counterResponse:
+      description: "counter response"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              counter:
+                type: integer
+            required:
+              - "counter"
+
+paths:
+  /counter:
+    get:
+      description: monotonic incrementing counter
+      operationId: getCounter
+      responses:
+        "200":
+          $ref: "#/components/responses/counterResponse"
+
+    post:
+      description: "set value for counter"
+      operationId: setCounter
+      parameters:
+        - name: value
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          $ref: "#/components/responses/counterResponse"

@@ -1,0 +1,8 @@
+# see https://github.com/deepmap/oapi-codegen/#using-oapi-codegen
+output:
+  pkg/api/openapi.gen.go
+package: api
+generate:
+  echo-server: true
+  models: true
+  embedded-spec: true
